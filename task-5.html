@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .calculator h2 {
+            margin-bottom: 20px;
+        }
+        .calculator input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .calculator button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .calculator button:hover {
+            background-color: #45a049;
+        }
+        .calculator .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Tip Calculator</h2>
+        <p>Enter the bill amount and tip percentage to calculate the total.</p>
+        <input type="number" id="billAmount" placeholder="Bill amount">
+        <input type="number" id="tipPercentage" placeholder="Tip percentage">
+        <button onclick="calculateTip()">CALCULATE</button>
+        <div class="result" id="totalAmount">Total: </div>
+    </div>
+
+    <script>
+        function calculateTip() {
+            const billAmount = document.getElementById('billAmount').value;
+            const tipPercentage = document.getElementById('tipPercentage').value;
+
+            if (billAmount === '' || tipPercentage === '') {
+                alert('Please enter values');
+                return;
+            }
+
+            const tipAmount = (billAmount * (tipPercentage / 100));
+            const totalAmount = parseFloat(billAmount) + parseFloat(tipAmount);
+
+            document.getElementById('totalAmount').innerText = 'Total: $' + totalAmount.toFixed(2);
+        }
+    </script>
+</body>
+</html>
